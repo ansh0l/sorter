@@ -27,7 +27,7 @@ def insert(start_node, num):
             start = start.next
         return start_node
 
-# pylint: disable-msg=C0103
+# pylint: disable=C0103
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
     with open(filename, "r") as f:

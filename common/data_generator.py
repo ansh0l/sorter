@@ -20,7 +20,7 @@ python data_generator.py outfile.txt reps=True
 import sys
 import random
 
-# pylint: disable-msg=C0103
+# pylint: disable=C0103
 
 if __name__ == "__main__":
 

@@ -9,15 +9,15 @@ import sys
 def bubble_sort(numbers):
     """bubble sort the values"""
     change = True
-    while change: 
+    while change:
         change = 0
         for i in range(1, len(numbers)):
             if numbers[i-1] > numbers[i]:
                 numbers[i-1], numbers[i] = numbers[i], numbers[i-1]
                 change += 1
-    return numbers 
+    return numbers
 
-# pylint: disable-msg=C0103
+# pylint: disable=C0103
 
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
