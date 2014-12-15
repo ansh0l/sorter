@@ -32,5 +32,6 @@ if __name__ == "__main__":
         for i in range(low, high):
             elements.append(random.randint(low, high))
         if len(sys.argv) == 3 and sys.argv[2].lower() != "reps=true":
-            elements = set(elements)
+            elements = list(set(elements))
+        random.shuffle(elements)
         f.write(' '.join(str(i) for i in elements))
