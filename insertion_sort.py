@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+Sample code to sort numbers using Insertion sort
+ --> http://en.wikipedia.org/wiki/Insertion_sort
+"""
 
 import sys
 
@@ -12,7 +16,6 @@ class Node(object):
 
 def insert(start_node, num):
     """Inserts elements in a linked list"""
-
     start = start_node
     if num < start.num:
         return Node(num, start)
@@ -24,6 +27,7 @@ def insert(start_node, num):
             start = start.next
         return start_node
 
+# pylint: disable-msg=C0103
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
     with open(filename, "r") as f:
