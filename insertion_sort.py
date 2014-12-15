@@ -5,32 +5,26 @@ import sys
 class Node(object):
 
     def __init__(self, num, next=None):
-        assert type(num) == int and (type(next) == Node or not next)
+        assert type(num) == int and (not next or type(next) == Node)
         self.num = num
         self.next = next
 
-filename = sys.argv[1] if len(sys.argv) > 1 else "output.txt"
+filename = sys.argv[1] if len(sys.argv) > 1 else "input.txt"
 
 def insert(start_node, num):
-    node = Node(num)
     start = start_node
-    if start_node.num > num:
-        node.next = start_node
-        return node
+    if num < start.num:
+        return Node(num, start)
     else:
-        while start_node.num <= num:
-            if start_node.next and start_node.next.num <= num:
-                continue
-            else:
-                node.next = start_node.next
-                start_node.next = node
+        while start.num <= num:
+            if not (start.next and start.next.num <= num):
+                start.next = Node(num, start.next)
                 break
-            start_node = start_node.next
-        return start
+            start = start.next
+        return start_node
 
 with open(filename, "r") as f:
-    numbers = [int(i) for i in f.read().split()][:1000]
-    print len(numbers)
+    numbers = [int(i) for i in f.read().split()]
     start = Node(numbers[0])
     for num in numbers[1:]:
         start = insert(start, num)
