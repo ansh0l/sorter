@@ -9,7 +9,7 @@ class Node(object):
         self.num = num
         self.next = next
 
-filename = sys.argv[1] if len(sys.argv) > 1 else "input.txt"
+filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
 
 def insert(start_node, num):
     start = start_node
