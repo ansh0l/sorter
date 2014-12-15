@@ -32,7 +32,7 @@ if __name__ == "__main__":
         elements = []
         for i in range(low, high):
             elements.append(random.randint(low, high))
-        if len(sys.argv) == 3 and sys.argv[2].lower() != "reps=true":
+        if not (len(sys.argv) == 3 and sys.argv[2].lower() != "reps=true"):
             elements = list(set(elements))
         random.shuffle(elements)
         f.write('\n'.join(str(i) for i in elements))
