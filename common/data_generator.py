@@ -21,9 +21,10 @@ python data_generator.py outfile.txt reps=True
 import sys
 import random
 
+# pylint: disable-msg=C0103
+
 if __name__ == "__main__":
 
-    # pylint: disable-msg=C0103
     low, high = 0, 10**6
     output = sys.argv[1] if len(sys.argv) > 1 else "output.txt"
 
@@ -34,4 +35,4 @@ if __name__ == "__main__":
         if len(sys.argv) == 3 and sys.argv[2].lower() != "reps=true":
             elements = list(set(elements))
         random.shuffle(elements)
-        f.write(' '.join(str(i) for i in elements))
+        f.write('\n'.join(str(i) for i in elements))
