@@ -17,35 +17,34 @@ class Node(object):
         self.prev = prev
 
 def bubble_sort(start):
-    """bubble sort the values
-    If nodes are in order     |1| -> |2| -> |3| -> |4|, 
+    """
+    bubble sort the values
+    If nodes are in order     |1| -> |2| -> |3| -> |4|,
         and |2| > |3|,
         then the new order is |1| -> |3| -> |2| -> |4|
     """
     change = 0
     current = start
-    import pdb; pdb.set_trace()
-    try:
-        while current.next:
-            if current.next.num < current.num:
-                n1, n2, n3 = current.prev, current, current.next
-                n4 = current.next.next if current.next.next else None
-                if n1: n1.next = n3
-                else: start = n3
-                if n4: n4.prev = n2
-                n2.prev = n3
-                n2.next = n4
-                n3.prev = n1
-                n3.next = n2
-                change += 1
+    while current.next:
+        if current.next.num < current.num:
+            node1, node2, node3 = current.prev, current, current.next
+            node4 = current.next.next if current.next.next else None
+            if node1:
+                node1.next = node3
             else:
-                current = current.next
-    except Exception as e:
-        import pdb; pdb.set_trace()
-        print e.message
+                start = node3
+            if node4:
+                node4.prev = node2
+            node2.prev = node3
+            node2.next = node4
+            node3.prev = node1
+            node3.next = node2
+            change += 1
+        else:
+            current = current.next
     return change, start
 
-# pylint: disable-msg=C0103
+# pylint: disable=C0103
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
     with open(filename, "r") as f:
