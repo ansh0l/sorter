@@ -46,9 +46,10 @@ def bubble_sort(start):
 
 # pylint: disable=C0103
 if __name__ == "__main__":
+
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
     with open(filename, "r") as f:
-        numbers = [int(i) for i in f.read().split()][:10]
+        numbers = [int(i) for i in f.read().split()]
     start = curr = prev = None
 
     for idx, num in enumerate(numbers):
@@ -58,11 +59,12 @@ if __name__ == "__main__":
             curr = Node(num, prev=prev)
             prev.next = curr
             prev = curr
+
     change = True
     while change:
-        st = start
-        while st:
-            print st.num
-            st = st.next
         change, start = bubble_sort(start)
+
+    while start:
+        print start.num
+        start = start.next
 
