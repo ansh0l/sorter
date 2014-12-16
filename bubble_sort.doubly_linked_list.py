@@ -16,20 +16,27 @@ class Node(object):
         self.next = next
         self.prev = prev
 
-def bubble_sort(linked_list_of_nodes):
+def bubble_sort(start):
     """bubble sort the values"""
     change = 0
-    while linked_list_of_nodes.next:
-        print 1
-    return change
+    original_start = start
+    import pdb; pdb.set_trace()
+    while start.next:
+        if start.next.num < start.num:
+            if not start.prev:
+                original_start = start.next
+            start.next, start.next.prev = start.next.next, start.prev
+            change += 1
+        start = start.next
+    return change, original_start
 
 # pylint: disable-msg=C0103
-
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
     with open(filename, "r") as f:
         numbers = [int(i) for i in f.read().split()]
-    prev, curr, start = None, None, None
+    start = curr = prev = None
+
     for idx, num in enumerate(numbers):
         if idx == 0:
             start = curr = prev = Node(num)
@@ -37,6 +44,9 @@ if __name__ == "__main__":
             curr = Node(num, prev=prev)
             prev.next = curr
             prev = curr
+    change = True
+    while change:
+        change, start = bubble_sort(start)
     while start:
         print start.num
         start = start.next
