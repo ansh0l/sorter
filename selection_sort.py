@@ -7,6 +7,10 @@ Sample code to sort numbers using Selection sort
 import sys
 
 def selection_sort(numbers):
+    """
+    Does a selection sort over the input list of numbers
+    and returns the sorted list
+    """
     idx, length, min_idx = 0, len(numbers), 0
     for idx in range(length):
         min_idx = length - 1
@@ -16,6 +20,7 @@ def selection_sort(numbers):
         numbers[idx], numbers[min_idx] = numbers[min_idx], numbers[idx]
     return numbers
 
+# pylint: disable=C0103
 if __name__ == "__main__":
 
     filename = sys.argv[1] if len(sys.argv) > 1 else "input.10000.txt"
