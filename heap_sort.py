@@ -6,11 +6,15 @@ Sample code to sort numbers using Heap sort
 
 import sys
 
-def heapify():
-    pass
+def heapify(numbers):
+    return numbers
 
 def heap_sort(numbers):
-    return numbers
+    result = []
+    while len(numbers) > 1:
+        numbers = heapify(numbers[1:])
+        result.append(numbers[0])
+    return result
 
 if __name__ == "__main__":
 
