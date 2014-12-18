@@ -8,10 +8,15 @@ import sys
 
 
 def merge(list1, list2):
-    pass
+    result = []
+    return result
 
 def merge_sort(numbers):
-    pass
+    mid = len(numbers)/2
+    if mid:
+        return merge(merge_sort(numbers[:mid]), merge_sort(numbers[mid:]))
+    else: # mid will be 0 => length was 1
+        return numbers
 
 if __name__ == "__main__":
 
